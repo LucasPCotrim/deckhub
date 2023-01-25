@@ -137,7 +137,7 @@ const Global = css`
     --primary-color: #010910;
     --secundary-color: #04293a;
     --tertiary-color: #064663;
-    --quaternary-color: #b6eada;
+    --quaternary-color: #b6e7ea;
     /* https://colorhunt.co/palette/041c3204293a064663ecb365 */
     width: 100%;
     display: flex;
