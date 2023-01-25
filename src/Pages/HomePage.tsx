@@ -1,3 +1,10 @@
+import TopMenu from '../components/TopMenu/TopMenu';
+
 export default function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <TopMenu />
+      <div>HomePage</div>
+    </>
+  );
 }
