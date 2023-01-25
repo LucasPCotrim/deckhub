@@ -156,6 +156,11 @@ const Global = css`
     align-items: center;
     justify-content: flex-start;
   }
+  .prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }
 `;
 
 const GlobalStyle = createGlobalStyle`

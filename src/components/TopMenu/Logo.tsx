@@ -7,19 +7,19 @@ export default function Logo() {
         <div className='img'>
           <MtgPlaneswalkerSymbol />
         </div>
-        <div className='name'>Deckhub</div>
+        <div className='name prevent-select'>Deckhub</div>
       </LogoStyle>
     </>
   );
 }
 
 const LogoStyle = styled.div`
-  width: 170px;
   height: 100%;
-
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-right: 60px;
+  cursor: pointer;
   .img {
     height: 90%;
     width: 70px;
@@ -31,7 +31,7 @@ const LogoStyle = styled.div`
     }
   }
   .name {
-    font-size: 24px;
+    font-size: 26px;
   }
 `;
 
@@ -46,7 +46,7 @@ function MtgPlaneswalkerSymbol() {
       preserveAspectRatio='xMidYMid meet'>
       <g
         transform='translate(0.000000,1196.000000) scale(0.100000,-0.100000)'
-        fill='#000000'
+        fill='#b6e7ea'
         stroke='none'>
         <path
           d='M3327 11936 c-25 -64 -53 -416 -102 -1251 -83 -1429 -143 -2122 -241
