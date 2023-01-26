@@ -1,17 +1,22 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default function MenuButtons() {
   return (
     <>
-      <MenuButtonsStyle>
+      <MenuButtonsStyle className='prevent-link-decoration'>
         <div className='options-group prevent-select'>
-          <MenuButton>Home</MenuButton>
+          <MenuButton>
+            <Link to='/'>Home</Link>
+          </MenuButton>
           <MenuButton>Decks</MenuButton>
           <MenuButton>Cards</MenuButton>
         </div>
         <div className='options-group prevent-select'>
           <MenuButton>Login</MenuButton>
-          <MenuButton>Register</MenuButton>
+          <MenuButton>
+            <Link to='/sign-up'>Register</Link>
+          </MenuButton>
         </div>
       </MenuButtonsStyle>
     </>

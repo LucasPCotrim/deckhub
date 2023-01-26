@@ -14,12 +14,11 @@ export default function Logo() {
 }
 
 const LogoStyle = styled.div`
-  height: 100%;
+  height: 90px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-right: 60px;
-  cursor: pointer;
   .img {
     height: 90%;
     width: 70px;

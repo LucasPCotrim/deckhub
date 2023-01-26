@@ -132,6 +132,7 @@ const Global = css`
     box-sizing: border-box;
     border: 0;
     padding: 0;
+    margin: 0;
   }
   body {
     --primary-color: #010910;
@@ -162,6 +163,21 @@ const Global = css`
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+  }
+  .prevent-link-decoration {
+    a:link {
+      text-decoration: none;
+    }
+    a:visited {
+      text-decoration: none;
+      color: var(--quaternary-color);
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    a:active {
+      text-decoration: none;
+    }
   }
 `;
 
