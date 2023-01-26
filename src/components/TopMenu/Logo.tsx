@@ -46,7 +46,7 @@ function MtgPlaneswalkerSymbol() {
       preserveAspectRatio='xMidYMid meet'>
       <g
         transform='translate(0.000000,1196.000000) scale(0.100000,-0.100000)'
-        fill='#b6e7ea'
+        fill='#c0dde1'
         stroke='none'>
         <path
           d='M3327 11936 c-25 -64 -53 -416 -102 -1251 -83 -1429 -143 -2122 -241

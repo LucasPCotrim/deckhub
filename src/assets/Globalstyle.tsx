@@ -137,7 +137,7 @@ const Global = css`
     --primary-color: #010910;
     --secundary-color: #04293a;
     --tertiary-color: #064663;
-    --quaternary-color: #b6e7ea;
+    --quaternary-color: #c0dde1;
     /* https://colorhunt.co/palette/041c3204293a064663ecb365 */
     width: 100%;
     display: flex;
@@ -157,9 +157,11 @@ const Global = css`
     justify-content: flex-start;
   }
   .prevent-select {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
 `;
 
