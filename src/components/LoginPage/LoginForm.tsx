@@ -1,18 +1,28 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useMutation } from 'react-query';
 import { authApi } from '../../services/authApi';
 import LoadingScreen from '../utils/LoadingScreen';
 import { Link, Navigate } from 'react-router-dom';
+import UserContext from '../../contexts/UserContext';
 
 type formType = {
   email: string;
   password: string;
 };
 export default function LoginForm() {
-  const loginState = useMutation((form: formType) => {
-    return authApi.login(form.email, form.password);
-  });
+  const { setUserData } = useContext(UserContext);
+
+  const loginState = useMutation(
+    (form: formType) => {
+      return authApi.login(form.email, form.password);
+    },
+    {
+      onSuccess: async (data) => {
+        setUserData(data.data.user);
+      },
+    }
+  );
 
   const [form, setForm] = useState({
     email: '',
