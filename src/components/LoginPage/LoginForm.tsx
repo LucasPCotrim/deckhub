@@ -6,21 +6,17 @@ import LoadingScreen from '../utils/LoadingScreen';
 import { Link, Navigate } from 'react-router-dom';
 
 type formType = {
-  name: string;
   email: string;
   password: string;
-  passwordConfirm: string;
 };
-export default function SignupForm() {
-  const signupState = useMutation((form: formType) => {
-    return userApi.signUp(form.name, form.email, form.password);
+export default function LoginForm() {
+  const loginState = useMutation((form: formType) => {
+    return userApi.login(form.email, form.password);
   });
 
   const [form, setForm] = useState({
-    name: '',
     email: '',
     password: '',
-    passwordConfirm: '',
   });
   const handleForm = (event: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
@@ -30,19 +26,17 @@ export default function SignupForm() {
   };
   const clearForm = () => {
     setForm({
-      name: '',
       email: '',
       password: '',
-      passwordConfirm: '',
     });
   };
   const executeSignUp = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    signupState.mutate(form);
+    loginState.mutate(form);
     clearForm();
   };
 
-  if (signupState.isLoading) {
+  if (loginState.isLoading) {
     return (
       <>
         <LoadingScreen message={'Loading...'} />
@@ -50,23 +44,14 @@ export default function SignupForm() {
     );
   }
 
-  if (signupState.isSuccess) {
-    return <Navigate to='/login' replace={true} />;
+  if (loginState.isSuccess) {
+    return <Navigate to='/' replace={true} />;
   }
 
   return (
     <>
-      <SignupFormStyle onSubmit={executeSignUp}>
-        <h1>Create an account</h1>
-        <InputWrapper>
-          <h2>Username</h2>
-          <input
-            type='text'
-            name='name'
-            value={form.name}
-            onChange={handleForm}
-          />
-        </InputWrapper>
+      <LoginFormStyle onSubmit={executeSignUp}>
+        <h1>Login with your account</h1>
 
         <InputWrapper>
           <h2>E-mail</h2>
@@ -88,32 +73,23 @@ export default function SignupForm() {
           />
         </InputWrapper>
 
-        <InputWrapper>
-          <h2>Confirm Password</h2>
-          <input
-            type='password'
-            name='passwordConfirm'
-            value={form.passwordConfirm}
-            onChange={handleForm}
-          />
-        </InputWrapper>
         <div className='form-bottom prevent-link-decoration'>
           <h3>
-            Already have an account?{' '}
+            Don't have an account?{' '}
             <Link to={'/login'}>
-              <span>Sign in</span>
+              <span>Register</span>
             </Link>
           </h3>
           <button>
-            <h2>Join</h2>
+            <h2>Enter</h2>
           </button>
         </div>
-      </SignupFormStyle>
+      </LoginFormStyle>
     </>
   );
 }
 
-const SignupFormStyle = styled.form`
+const LoginFormStyle = styled.form`
   height: 300px;
   width: 60%;
   display: flex;

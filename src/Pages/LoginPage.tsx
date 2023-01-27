@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import CoverImage from '../components/SignupPage/CoverImage';
+import CoverImage from '../components/LoginPage/CoverImage';
 import Logo from '../components/TopMenu/Logo';
 import { Link } from 'react-router-dom';
-import SignupForm from '../components/SignupPage/SignupForm';
+import LoginForm from '../components/LoginPage/LoginForm';
 
 export default function SignupPage() {
   return (
     <>
-      <SignupPageStyle>
+      <LoginPageStyle>
         <CoverImage />
         <div className='page-content'>
           <div className='logo-wrapper prevent-link-decoration'>
@@ -15,14 +15,14 @@ export default function SignupPage() {
               <Logo />
             </Link>
           </div>
-          <SignupForm />
+          <LoginForm />
         </div>
-      </SignupPageStyle>
+      </LoginPageStyle>
     </>
   );
 }
 
-const SignupPageStyle = styled.div`
+const LoginPageStyle = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -31,7 +31,7 @@ const SignupPageStyle = styled.div`
   justify-content: flex-start;
   .page-content {
     height: 100%;
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;

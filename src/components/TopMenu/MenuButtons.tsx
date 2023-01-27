@@ -13,7 +13,9 @@ export default function MenuButtons() {
           <MenuButton>Cards</MenuButton>
         </div>
         <div className='options-group prevent-select'>
-          <MenuButton>Login</MenuButton>
+          <MenuButton>
+            <Link to='/login'>Login</Link>
+          </MenuButton>
           <MenuButton>
             <Link to='/sign-up'>Register</Link>
           </MenuButton>
