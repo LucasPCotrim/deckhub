@@ -1,7 +1,19 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useMutation } from 'react-query';
+import { signUp } from '../../services/userApi';
 
+type formType = {
+  name: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+};
 export default function SignupForm() {
+  const signupState = useMutation((form: formType) => {
+    return signUp(form.name, form.email, form.password);
+  });
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -23,9 +35,18 @@ export default function SignupForm() {
     });
   };
   const executeSignUp = (event: React.FormEvent<HTMLFormElement>) => {
-    clearForm();
     event.preventDefault();
+    signupState.mutate(form);
+    clearForm();
   };
+
+  if (signupState.isLoading) {
+    return (
+      <>
+        <div>Loading...</div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -131,9 +152,11 @@ const InputWrapper = styled.div`
     margin-bottom: 10px;
   }
   > input {
+    padding-left: 10px;
     width: 100%;
     height: 40px;
     background-color: #414141;
     border-radius: 8px;
+    color: var(--quaternary-color);
   }
 `;

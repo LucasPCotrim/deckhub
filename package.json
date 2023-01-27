@@ -13,6 +13,7 @@
     "axios": "^1.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
@@ -87,10 +88,6 @@
           "exceptAfterSingleLine": true
         }
       ],
-      "space-before-function-paren": [
-        "error",
-        "never"
-      ],
       "space-before-blocks": [
         "error",
         "always"
@@ -125,4 +122,3 @@
     "@types/styled-components": "^5.1.26"
   }
 }
-
