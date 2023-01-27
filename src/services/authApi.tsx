@@ -8,6 +8,6 @@ export async function login(email: string, password: string) {
   return api.post('/auth/login', { email, password });
 }
 
-const userApi = { signUp, login };
+const authApi = { signUp, login };
 
-export { userApi };
+export { authApi };

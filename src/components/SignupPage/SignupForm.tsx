@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { userApi } from '../../services/userApi';
+import { authApi } from '../../services/authApi';
 import LoadingScreen from '../utils/LoadingScreen';
 import { Link, Navigate } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ type formType = {
 };
 export default function SignupForm() {
   const signupState = useMutation((form: formType) => {
-    return userApi.signUp(form.name, form.email, form.password);
+    return authApi.signUp(form.name, form.email, form.password);
   });
 
   const [form, setForm] = useState({
