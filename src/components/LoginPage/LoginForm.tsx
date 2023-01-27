@@ -30,7 +30,7 @@ export default function LoginForm() {
       password: '',
     });
   };
-  const executeSignUp = (event: React.FormEvent<HTMLFormElement>) => {
+  const executeLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     loginState.mutate(form);
     clearForm();
@@ -50,7 +50,7 @@ export default function LoginForm() {
 
   return (
     <>
-      <LoginFormStyle onSubmit={executeSignUp}>
+      <LoginFormStyle onSubmit={executeLogin}>
         <h1>Login with your account</h1>
 
         <InputWrapper>
