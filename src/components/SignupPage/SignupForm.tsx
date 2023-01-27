@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { signUp } from '../../services/userApi';
 import LoadingScreen from '../utils/LoadingScreen';
+import { Link, useNavigate } from 'react-router-dom';
 
 type formType = {
   name: string;
@@ -11,6 +12,8 @@ type formType = {
   passwordConfirm: string;
 };
 export default function SignupForm() {
+  const navigate = useNavigate();
+
   const signupState = useMutation((form: formType) => {
     return signUp(form.name, form.email, form.password);
   });
@@ -47,6 +50,10 @@ export default function SignupForm() {
         <LoadingScreen message={'Loading...'} />
       </>
     );
+  }
+
+  if (signupState.isSuccess) {
+    navigate('/login');
   }
 
   return (
@@ -92,9 +99,12 @@ export default function SignupForm() {
             onChange={handleForm}
           />
         </InputWrapper>
-        <div className='form-bottom'>
+        <div className='form-bottom prevent-link-decoration'>
           <h3>
-            Already have an account? <span>Sign in</span>
+            Already have an account?{' '}
+            <Link to={'/login'}>
+              <span>Sign in</span>
+            </Link>
           </h3>
           <button>
             <h2>Join</h2>
