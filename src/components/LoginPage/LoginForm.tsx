@@ -76,7 +76,7 @@ export default function LoginForm() {
         <div className='form-bottom prevent-link-decoration'>
           <h3>
             Don't have an account?{' '}
-            <Link to={'/login'}>
+            <Link to={'/sign-up'}>
               <span>Register</span>
             </Link>
           </h3>
