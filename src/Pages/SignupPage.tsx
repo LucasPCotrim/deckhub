@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import CoverImage from '../components/SignupPage/CoverImage';
 import Logo from '../components/TopMenu/Logo';
+import { Link } from 'react-router-dom';
 
 import SignupForm from '../components/SignupPage/SignupForm';
 
@@ -10,8 +11,10 @@ export default function SignupPage() {
       <SignupPageStyle>
         <CoverImage />
         <div className='page-content'>
-          <div className='logo-wrapper'>
-            <Logo />
+          <div className='logo-wrapper prevent-link-decoration'>
+            <Link to='/'>
+              <Logo />
+            </Link>
           </div>
           <SignupForm />
         </div>
