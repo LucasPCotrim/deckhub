@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import coverImage from '../../assets/hydra.jpg';
+import coverImage from '../../assets/nicol-bolas.jpg';
 
 export default function CoverImage() {
   return (
     <>
       <CoverImageStyle>
-        <img src={coverImage} alt='signup page cover' />
+        <img src={coverImage} alt='login page cover' />
         <div className='right-blur-cover'></div>
       </CoverImageStyle>
     </>
