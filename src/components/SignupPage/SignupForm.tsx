@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { signUp } from '../../services/userApi';
+import LoadingScreen from '../utils/LoadingScreen';
 
 type formType = {
   name: string;
@@ -43,7 +44,7 @@ export default function SignupForm() {
   if (signupState.isLoading) {
     return (
       <>
-        <div>Loading...</div>
+        <LoadingScreen message={'Loading...'} />
       </>
     );
   }
