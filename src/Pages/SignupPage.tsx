@@ -37,7 +37,7 @@ const SignupPageStyle = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 170px;
+    padding-top: 170px;
     .logo-wrapper {
       transform: scale(1.3);
       margin-bottom: 90px;
