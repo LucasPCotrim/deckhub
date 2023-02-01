@@ -1,11 +1,33 @@
 import styled, { keyframes } from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
+import { authApi } from '../../services/authApi';
+import useToken from '../../hooks/useToken';
+import UserContext from '../../contexts/UserContext';
+import { useContext } from 'react';
+import { useMutation } from 'react-query';
 
 type Props = {
   handleToggleProfileSubMenu: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 export default function ProfileSubMenu({ handleToggleProfileSubMenu }: Props) {
+  const { setUserData } = useContext(UserContext);
+  const token = useToken();
+
+  const logoutState = useMutation(
+    (token: string) => {
+      return authApi.logout(token);
+    },
+    {
+      onSuccess: async (data) => {
+        setUserData({});
+      },
+    }
+  );
+
+  const handleLogout = (event: React.MouseEvent<HTMLDivElement>) => {
+    logoutState.mutate(token);
+  };
   return (
     <ProfileSubMenuStyle>
       <div
@@ -17,7 +39,9 @@ export default function ProfileSubMenu({ handleToggleProfileSubMenu }: Props) {
         </div>
         <div className='options-container'>
           <div className='option'>Profile</div>
-          <div className='option'>Log out</div>
+          <div className='option' onClick={handleLogout}>
+            Log out
+          </div>
         </div>
       </SubMenuPopUp>
     </ProfileSubMenuStyle>

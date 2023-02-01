@@ -8,6 +8,18 @@ export async function login(email: string, password: string) {
   return api.post('/auth/login', { email, password });
 }
 
-const authApi = { signUp, login };
+export async function logout(token: string) {
+  return api.post(
+    '/auth/logout',
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+}
+
+const authApi = { signUp, login, logout };
 
 export { authApi };
