@@ -167,6 +167,7 @@ const Global = css`
   .prevent-link-decoration {
     a:link {
       text-decoration: none;
+      color: var(--quaternary-color);
     }
     a:visited {
       text-decoration: none;
@@ -174,9 +175,11 @@ const Global = css`
     }
     a:hover {
       text-decoration: none;
+      color: var(--quaternary-color);
     }
     a:active {
       text-decoration: none;
+      color: var(--quaternary-color);
     }
   }
 `;
