@@ -2,7 +2,12 @@ import { createContext, ReactNode } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 type userContextValue = {
-  userData: any;
+  userData: {
+    token: string;
+    name: string;
+    email: string;
+    profilePic: string;
+  };
   setUserData: (value: any) => void;
 };
 const UserContext = createContext({} as userContextValue);

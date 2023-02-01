@@ -19,7 +19,6 @@ export default function App() {
               <Route path='/' element={<HomePage />} />
               <Route path='/sign-up' element={<SignupPage />} />
               <Route path='/login' element={<LoginPage />} />
-              <Route path='/home' element={<h1>HomePage</h1>} />
             </Routes>
           </BrowserRouter>
         </UserProvider>
