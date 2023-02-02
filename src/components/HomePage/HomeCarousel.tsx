@@ -19,7 +19,7 @@ export default function HomeCarousel() {
           <Item>
             <img src={Img1} alt='carousel1' />
             <div className='info'>
-              <p>Start building decks with the most recent set!</p>
+              <p>Start building decks with the most recent set</p>
             </div>
           </Item>
           <Item>
@@ -31,7 +31,7 @@ export default function HomeCarousel() {
           <Item>
             <img src={Img3} alt='carousel3' />
             <div className='info'>
-              <p>Learn more about the the fundamentals</p>
+              <p>Learn how to play Magic: the Gathering</p>
             </div>
           </Item>
         </Carousel>
