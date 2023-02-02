@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import TopMenu from '../components/TopMenu/TopMenu';
 import CoverImage from '../components/HomePage/CoverImage';
+import HomeCarousel from '../components/HomePage/HomeCarousel';
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
       <HomePageStyle>
         <TopMenu />
         <CoverImage />
+        <HomeCarousel />
       </HomePageStyle>
     </>
   );
