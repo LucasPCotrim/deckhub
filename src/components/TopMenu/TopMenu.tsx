@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 import Logo from './Logo';
 import MenuOptions from './MenuButtons';
+import { Link } from 'react-router-dom';
 
 export default function TopMenu() {
   return (
     <>
-      <TopMenuStyle>
-        <Logo />
+      <TopMenuStyle className='prevent-link-decoration'>
+        <Link to={'/'}>
+          <Logo />
+        </Link>
+
         <MenuOptions />
       </TopMenuStyle>
     </>

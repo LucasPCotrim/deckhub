@@ -149,6 +149,9 @@ const Global = css`
     color: var(--quaternary-color);
     font-family: 'Lexend Deca', sans-serif;
     font-weight: 400;
+    input:focus {
+      outline: none;
+    }
   }
   #root {
     width: 100%;
