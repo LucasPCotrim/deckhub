@@ -27,6 +27,14 @@ const SearchBarStyle = styled.div`
   border-radius: 12px;
   padding-left: 6px;
   padding-right: 4px;
+  margin-bottom: 80px;
+  border: 1px solid var(--tertiary-color);
+  &:focus-within {
+    -webkit-box-shadow: 0px 0px 10px 1px var(--tertiary-color);
+    box-shadow: 0px 0px 10px 1px var(--tertiary-color);
+    border: 1px solid cyan;
+  }
+
   .advanced-search {
     position: absolute;
     top: -25px;
