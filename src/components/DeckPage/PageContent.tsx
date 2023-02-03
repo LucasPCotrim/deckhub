@@ -4,14 +4,23 @@ import { useQuery } from 'react-query';
 import { deckApi } from '../../services/deckApi';
 import useToken from '../../hooks/useToken';
 import LoadingScreen from '../utils/LoadingScreen';
+import DeckHeader from './DeckHeader';
+import { useContext } from 'react';
+import DeckContext from '../../contexts/DeckContext';
 
 export default function PageContent() {
+  const { setDeckData } = useContext(DeckContext);
   const { id } = useParams();
   const token = useToken();
-  const deckInfoQuery = useQuery(`deckInfo-${id}`, () =>
-    deckApi.getDeckInfo(token, Number(id))
+  const deckInfoQuery = useQuery(
+    `deckInfo-${id}`,
+    () => deckApi.getDeckInfo(token, Number(id)),
+    {
+      onSuccess: (data) => {
+        setDeckData(data.data);
+      },
+    }
   );
-  console.log(deckInfoQuery);
 
   if (deckInfoQuery.isLoading) {
     return (
@@ -23,16 +32,18 @@ export default function PageContent() {
 
   return (
     <>
-      <PageContentStyle></PageContentStyle>
+      <PageContentStyle>
+        <DeckHeader />
+      </PageContentStyle>
     </>
   );
 }
 
 const PageContentStyle = styled.div`
-  width: 85%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 70px;
+  margin-top: 100px;
 `;

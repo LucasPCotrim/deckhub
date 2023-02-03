@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-
 import PageContent from '../components/DeckPage/PageContent';
+import { DeckProvider } from '../contexts/DeckContext';
 
 export default function DeckPage() {
   return (
     <>
       <DeckPageStyle>
-        <PageContent />
+        <DeckProvider>
+          <PageContent />
+        </DeckProvider>
       </DeckPageStyle>
     </>
   );
