@@ -1,10 +1,10 @@
 import TopMenu from '../components/TopMenu/TopMenu';
 import { ReactNode } from 'react';
 
-type props = {
+type Props = {
   children: ReactNode;
 };
-export default function MainPage({ children }: props) {
+export default function MainPage({ children }: Props) {
   return (
     <>
       <TopMenu />
