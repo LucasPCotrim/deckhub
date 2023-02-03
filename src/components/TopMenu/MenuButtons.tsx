@@ -27,7 +27,9 @@ export default function MenuButtons() {
           <MenuButton>
             <Link to='/'>Home</Link>
           </MenuButton>
-          <MenuButton>Decks</MenuButton>
+          <MenuButton>
+            <Link to='/decks'>Decks</Link>
+          </MenuButton>
           <MenuButton>Cards</MenuButton>
         </div>
         {loggedIn ? <ProfilePic /> : <AuthenticationButtons />}
