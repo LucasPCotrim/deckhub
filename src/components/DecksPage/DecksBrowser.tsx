@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import { deckApi } from '../../services/deckApi';
 import useToken from '../../hooks/useToken';
 import LoadingScreen from '../utils/LoadingScreen';
+import { Link } from 'react-router-dom';
 
 type deckType = {
   id: number;
@@ -14,11 +15,9 @@ type deckType = {
 };
 export default function DecksBrowser() {
   const token = useToken();
-  const { isLoading, data } = useQuery('decks-data', () =>
-    deckApi.getDecks(token)
-  );
+  const decksQuery = useQuery('decks-data', () => deckApi.getDecks(token));
 
-  if (isLoading) {
+  if (decksQuery.isLoading) {
     return (
       <>
         <LoadingScreen message={'Loading...'} />
@@ -28,17 +27,17 @@ export default function DecksBrowser() {
 
   return (
     <>
-      <DecksBrowserStyle>
-        {data &&
-          data.data.map((deck: deckType, index: number) => (
+      <DecksBrowserStyle className='prevent-link-decoration'>
+        {decksQuery?.data?.data.map((deck: deckType, index: number) => (
+          <Link key={index} to={`/deck/${deck.id}`}>
             <Deck
-              key={index}
               image={deck.image}
               name={deck.name}
               format={deck.format.name}
               stats={{ numComments: 0, numLikes: 0, numVisits: deck.numVisits }}
             />
-          ))}
+          </Link>
+        ))}
       </DecksBrowserStyle>
     </>
   );

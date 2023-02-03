@@ -8,6 +8,14 @@ export async function getDecks(token: string) {
   });
 }
 
-const deckApi = { getDecks };
+export async function getDeckInfo(token: string, deckId: number) {
+  return api.get(`/decks/${deckId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+const deckApi = { getDecks, getDeckInfo };
 
 export { deckApi };

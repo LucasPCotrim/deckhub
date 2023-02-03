@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import DecksPage from './pages/DecksPage';
+import DeckPage from './pages/DeckPage';
 import { UserProvider } from './contexts/UserContext';
 
 const queryClient = new QueryClient();
@@ -33,6 +34,14 @@ export default function App() {
                 element={
                   <MainPage>
                     <DecksPage />
+                  </MainPage>
+                }
+              />
+              <Route
+                path='/deck/:id'
+                element={
+                  <MainPage>
+                    <DeckPage />
                   </MainPage>
                 }
               />
