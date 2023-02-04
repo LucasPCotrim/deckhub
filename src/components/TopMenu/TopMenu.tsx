@@ -10,7 +10,6 @@ export default function TopMenu() {
         <Link to={'/'}>
           <Logo />
         </Link>
-
         <MenuOptions />
       </TopMenuStyle>
     </>
@@ -18,9 +17,6 @@ export default function TopMenu() {
 }
 
 const TopMenuStyle = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 90px;
   display: flex;

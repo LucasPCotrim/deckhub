@@ -68,7 +68,7 @@ const ProfileSubMenuStyle = styled.div`
     top: 0;
     left: 0;
     background: #00000048;
-    z-index: 0;
+    z-index: 1;
   }
 `;
 

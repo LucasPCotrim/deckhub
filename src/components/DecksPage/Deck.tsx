@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { FaComments, FaHeart, FaEye } from 'react-icons/fa';
 
-type props = {
+type Props = {
   image: string;
   name: string;
   format: string;
   stats: { numComments: number; numLikes: number; numVisits: number };
 };
-export default function Deck({ image, name, format, stats }: props) {
+export default function Deck({ image, name, format, stats }: Props) {
   return (
     <>
       <DeckStyle>
