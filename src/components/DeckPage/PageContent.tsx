@@ -8,6 +8,7 @@ import DeckHeader from './DeckHeader';
 import { useContext } from 'react';
 import DeckContext from '../../contexts/DeckContext';
 import DeckVisualization from './DeckVisualization';
+import DeckStatistics from './DeckStatistics';
 
 export default function PageContent() {
   const { setDeckData } = useContext(DeckContext);
@@ -36,6 +37,7 @@ export default function PageContent() {
       <PageContentStyle>
         <DeckHeader />
         <DeckVisualization />
+        <DeckStatistics />
       </PageContentStyle>
     </>
   );
