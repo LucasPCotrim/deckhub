@@ -15,7 +15,12 @@ export default function DeckHeader() {
     <>
       <DeckHeaderStyle>
         <DeckCover img={deckData.image} />
-        <DeckInfo author={deckData.user} stats={stats} />
+        <DeckInfo
+          author={deckData.user}
+          deckName={deckData.name}
+          format={deckData.format.name}
+          stats={stats}
+        />
       </DeckHeaderStyle>
     </>
   );

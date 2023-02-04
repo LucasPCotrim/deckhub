@@ -9,13 +9,15 @@ type Props = {
     name: string;
     profilePic: string;
   };
+  deckName: string;
+  format: string;
   stats: {
     numVisits: number;
     numComments: number;
     numLikes: number;
   };
 };
-export default function DeckInfo({ author, stats }: Props) {
+export default function DeckInfo({ author, deckName, format, stats }: Props) {
   const navigate = useNavigate();
 
   return (
@@ -33,8 +35,8 @@ export default function DeckInfo({ author, stats }: Props) {
             <div className='author-name'>{author.name}</div>
           </AuthorInfo>
           <DeckName>
-            <div className='name'>My first deck</div>
-            <div className='format'>Modern</div>
+            <div className='name'>{deckName}</div>
+            <div className='format'>{format}</div>
           </DeckName>
         </HeaderInfo>
         <FooterInfo className='prevent-select'>
