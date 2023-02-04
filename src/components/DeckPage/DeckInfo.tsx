@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { FaComments, FaHeart, FaEye } from 'react-icons/fa';
+import { RiArrowGoBackLine } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   author: {
@@ -14,9 +16,17 @@ type Props = {
   };
 };
 export default function DeckInfo({ author, stats }: Props) {
+  const navigate = useNavigate();
+
   return (
     <>
       <DeckInfoStyle>
+        <SideButtons>
+          <div className='return-button' onClick={() => navigate(-1)}>
+            <RiArrowGoBackLine />
+          </div>
+        </SideButtons>
+
         <HeaderInfo>
           <AuthorInfo>
             <img src={author.profilePic} alt='author profile pic' />
@@ -54,11 +64,28 @@ const DeckInfoStyle = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 60px 70px;
+  padding: 60px 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+`;
+
+const SideButtons = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px;
+  .return-button {
+    font-size: 24px;
+    cursor: pointer;
+  }
 `;
 
 const HeaderInfo = styled.header`

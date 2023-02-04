@@ -38,7 +38,7 @@ const CardTypeGroupStyle = styled.div`
   gap: 7px;
   padding: 4px;
   margin-bottom: 50px;
-  margin-right: 40px;
+  margin-right: 20px;
 `;
 
 const GroupTitle = styled.div`

@@ -1,5 +1,6 @@
 import TopMenu from '../components/TopMenu/TopMenu';
 import { ReactNode } from 'react';
+import styled from 'styled-components';
 
 type Props = {
   children: ReactNode;
@@ -7,8 +8,14 @@ type Props = {
 export default function MainPage({ children }: Props) {
   return (
     <>
-      <TopMenu />
-      {children}
+      <MainPageStyle>
+        <TopMenu />
+        {children}
+      </MainPageStyle>
     </>
   );
 }
+
+const MainPageStyle = styled.div`
+  position: relative;
+`;

@@ -77,18 +77,16 @@ const CardInfo = styled.div<CardInfoProps>`
   cursor: pointer;
   .name {
     color: black;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
   }
   .card-tooltip {
     position: absolute;
     top: -200px;
     right: -300px;
-    height: 400px;
-    background-color: cyan;
     display: none;
     z-index: 1;
-    border-radius: 13.5px;
+    border-radius: 14px;
     overflow: hidden;
     img {
       width: 300px;
