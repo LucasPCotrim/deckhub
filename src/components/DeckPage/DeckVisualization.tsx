@@ -1,12 +1,30 @@
 import styled from 'styled-components';
 import CardTypeGroup from './CardGroup';
 import { useContext } from 'react';
-import DeckContext from '../../contexts/DeckContext';
+import DeckContext, { CardType } from '../../contexts/DeckContext';
 
 export default function DeckVisualization() {
   const { deckData } = useContext(DeckContext);
   console.log(deckData);
   const cards = deckData.cards;
+  const cardTypeGroups = getCardTypeGroups(cards);
+
+  return (
+    <>
+      <DeckVisualizationStyle>
+        {cardTypeGroups.map((cardTypeGroup, index) => (
+          <CardTypeGroup
+            key={index}
+            title={cardTypeGroup.title}
+            cards={cardTypeGroup.cards}
+          />
+        ))}
+      </DeckVisualizationStyle>
+    </>
+  );
+}
+
+function getCardTypeGroups(cards: CardType[]) {
   const creatureCards = [];
   const artifactCards = [];
   const instantCards = [];
@@ -52,19 +70,46 @@ export default function DeckVisualization() {
     throw new Error('Card type not found!');
   }
 
-  return (
-    <>
-      <DeckVisualizationStyle>
-        <CardTypeGroup title={'Creatures'} cards={creatureCards} />
-        <CardTypeGroup title={'Artifacts'} cards={artifactCards} />
-        <CardTypeGroup title={'Instants'} cards={instantCards} />
-        <CardTypeGroup title={'Sorceries'} cards={sorceryCards} />
-        <CardTypeGroup title={'Enchantments'} cards={enchantmentCards} />
-        <CardTypeGroup title={'Planeswalkers'} cards={planeswalkerCards} />
-        <CardTypeGroup title={'Lands'} cards={landCards} />
-      </DeckVisualizationStyle>
-    </>
-  );
+  const numberCardsInGroup = (cardGroup: CardType[]) =>
+    cardGroup.reduce((prev, curr) => prev + curr.amount, 0);
+
+  return [
+    {
+      title: 'Creatures',
+      cards: creatureCards,
+      amount: numberCardsInGroup(creatureCards),
+    },
+    {
+      title: 'Artifacts',
+      cards: artifactCards,
+      amount: numberCardsInGroup(artifactCards),
+    },
+    {
+      title: 'Instants',
+      cards: instantCards,
+      amount: numberCardsInGroup(instantCards),
+    },
+    {
+      title: 'Sorceries',
+      cards: sorceryCards,
+      amount: numberCardsInGroup(sorceryCards),
+    },
+    {
+      title: 'Enchantments',
+      cards: enchantmentCards,
+      amount: numberCardsInGroup(enchantmentCards),
+    },
+    {
+      title: 'Planeswalkers',
+      cards: planeswalkerCards,
+      amount: numberCardsInGroup(planeswalkerCards),
+    },
+    {
+      title: 'Lands',
+      cards: landCards,
+      amount: numberCardsInGroup(landCards),
+    },
+  ].sort((a, b) => b.cards.length - a.cards.length);
 }
 
 const DeckVisualizationStyle = styled.div`
