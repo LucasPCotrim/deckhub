@@ -24,5 +24,5 @@ export default function DeckHeader() {
 const DeckHeaderStyle = styled.div`
   position: relative;
   width: 100%;
-  background-color: cyan;
+  margin-bottom: 50px;
 `;

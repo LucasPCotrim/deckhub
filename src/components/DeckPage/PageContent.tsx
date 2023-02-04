@@ -7,6 +7,7 @@ import LoadingScreen from '../utils/LoadingScreen';
 import DeckHeader from './DeckHeader';
 import { useContext } from 'react';
 import DeckContext from '../../contexts/DeckContext';
+import DeckVisualization from './DeckVisualization';
 
 export default function PageContent() {
   const { setDeckData } = useContext(DeckContext);
@@ -34,6 +35,7 @@ export default function PageContent() {
     <>
       <PageContentStyle>
         <DeckHeader />
+        <DeckVisualization />
       </PageContentStyle>
     </>
   );

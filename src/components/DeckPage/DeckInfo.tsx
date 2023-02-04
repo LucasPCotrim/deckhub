@@ -27,7 +27,7 @@ export default function DeckInfo({ author, stats }: Props) {
             <div className='format'>Modern</div>
           </DeckName>
         </HeaderInfo>
-        <FooterInfo>
+        <FooterInfo className='prevent-select'>
           <DeckStats>
             <div className='deck-stats-wrapper'>
               <FaComments />

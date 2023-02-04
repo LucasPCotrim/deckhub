@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from 'react';
 
-type cardType = {
+export type CardType = {
   id: number;
   name: string;
   amount: number;
@@ -29,7 +29,7 @@ type cardType = {
   };
   releasedAt: Date;
 };
-type deckDataType = {
+export type DeckDataType = {
   id: number;
   name: string;
   image: string;
@@ -42,17 +42,17 @@ type deckDataType = {
     name: string;
     profilePic: string;
   };
-  cards: cardType[];
+  cards: CardType[];
   numVisits: number;
   createdAt: Date;
   updatedAt: Date;
 };
-type deckContextType = {
-  deckData: deckDataType;
+type DeckContextType = {
+  deckData: DeckDataType;
   setDeckData: (value: any) => void;
 };
 
-const DeckContext = createContext({} as deckContextType);
+const DeckContext = createContext({} as DeckContextType);
 export default DeckContext;
 
 interface Props {
@@ -78,7 +78,7 @@ export function DeckProvider({ children }: Props) {
     updatedAt: new Date(),
   };
 
-  const [deckData, setDeckData] = useState<deckDataType>(initialDeckData);
+  const [deckData, setDeckData] = useState<DeckDataType>(initialDeckData);
 
   return (
     <DeckContext.Provider value={{ deckData, setDeckData }}>
