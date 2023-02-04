@@ -38,11 +38,11 @@ function getCardColor(card: CardType) {
 }
 
 function handleBackgroundColor(color: string) {
-  if (color === 'Colorless') return '#a09f9e';
+  if (color === 'Colorless') return '#b8b8b8';
   if (color === 'Multicolor') return '#D1B972';
   if (color === 'White') return '#FAFBFD';
   if (color === 'Blue') return '#769bd5';
-  if (color === 'Black') return '#8c8c8e';
+  if (color === 'Black') return '#626262';
   if (color === 'Red') return '#d66144';
   if (color === 'Green') return '#3ea967';
 }
@@ -97,6 +97,9 @@ const CardInfo = styled.div<CardInfoProps>`
     box-shadow: 0px 0px 5px 2px var(--tertiary-color);
     .card-tooltip {
       display: initial;
+      &:hover {
+        display: none;
+      }
     }
   }
 `;
