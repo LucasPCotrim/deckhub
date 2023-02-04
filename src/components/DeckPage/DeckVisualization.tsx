@@ -122,5 +122,5 @@ const DeckVisualizationStyle = styled.div`
   flex-wrap: wrap;
   margin-right: 120px;
   margin-left: 80px;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
 `;
