@@ -5,7 +5,6 @@ import DeckContext, { CardType } from '../../contexts/DeckContext';
 
 export default function DeckVisualization() {
   const { deckData } = useContext(DeckContext);
-  console.log(deckData);
   const cards = deckData.cards;
   const cardTypeGroups = getCardTypeGroups(cards);
 

@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import whiteManaSymbol from '../../assets/SymbolMana_W.svg';
 import { CardType } from '../../contexts/DeckContext';
+import ManaSymbols from './ManaSymbols';
 
 type Props = {
   card: CardType;
 };
 export default function Card({ card }: Props) {
   const color = getCardColor(card);
+  const manaCost = card.manaCost;
+  const manaCostArray = manaCost.match(/{.+?}/g) as string[];
 
   return (
     <>
@@ -14,9 +17,7 @@ export default function Card({ card }: Props) {
         <div className='amount'>{`${card.amount}x`}</div>
         <CardInfo color={color}>
           <div className='name'>{`${card.name}`}</div>
-          <div className='mana-cost'>
-            <img src={whiteManaSymbol} alt='mana symbol' />
-          </div>
+          <ManaSymbols manaCostArray={manaCostArray} />
         </CardInfo>
       </CardStyle>
     </>
@@ -35,7 +36,7 @@ function getCardColor(card: CardType) {
 }
 
 function handleBackgroundColor(color: string) {
-  if (color === 'Colorless') return '#CDC3C1';
+  if (color === 'Colorless') return '#a09f9e';
   if (color === 'Multicolor') return '#D1B972';
   if (color === 'White') return '#FAFBFD';
   if (color === 'Blue') return '#6c95d8';
@@ -75,15 +76,5 @@ const CardInfo = styled.div<CardInfoProps>`
     color: black;
     font-size: 14px;
     font-weight: 600;
-  }
-  .mana-cost {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    img {
-      width: 15px;
-      height: 15px;
-    }
   }
 `;
