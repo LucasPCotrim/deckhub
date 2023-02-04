@@ -30,13 +30,15 @@ export default function CardTypeGroup({ title, cards }: Props) {
 }
 
 const CardTypeGroupStyle = styled.div`
-  width: 350px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 7px;
   padding: 4px;
+  margin-bottom: 50px;
+  margin-right: 40px;
 `;
 
 const GroupTitle = styled.div`

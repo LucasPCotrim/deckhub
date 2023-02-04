@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import whiteManaSymbol from '../../assets/SymbolMana_W.svg';
 import { CardType } from '../../contexts/DeckContext';
 import ManaSymbols from './ManaSymbols';
 
@@ -18,6 +17,9 @@ export default function Card({ card }: Props) {
         <CardInfo color={color}>
           <div className='name'>{`${card.name}`}</div>
           <ManaSymbols manaCostArray={manaCostArray} />
+          <div className='card-tooltip prevent-select'>
+            <img src={card.imageUri} alt='' />
+          </div>
         </CardInfo>
       </CardStyle>
     </>
@@ -39,7 +41,7 @@ function handleBackgroundColor(color: string) {
   if (color === 'Colorless') return '#a09f9e';
   if (color === 'Multicolor') return '#D1B972';
   if (color === 'White') return '#FAFBFD';
-  if (color === 'Blue') return '#6c95d8';
+  if (color === 'Blue') return '#769bd5';
   if (color === 'Black') return '#8c8c8e';
   if (color === 'Red') return '#d66144';
   if (color === 'Green') return '#3ea967';
@@ -62,7 +64,8 @@ interface CardInfoProps {
 }
 
 const CardInfo = styled.div<CardInfoProps>`
-  width: 90%;
+  position: relative;
+  width: 92%;
   height: 100%;
   background-color: ${(p) => handleBackgroundColor(p.color)};
   border-radius: 10px;
@@ -76,5 +79,26 @@ const CardInfo = styled.div<CardInfoProps>`
     color: black;
     font-size: 14px;
     font-weight: 600;
+  }
+  .card-tooltip {
+    position: absolute;
+    top: -200px;
+    right: -300px;
+    height: 400px;
+    background-color: cyan;
+    display: none;
+    z-index: 1;
+    border-radius: 13.5px;
+    overflow: hidden;
+    img {
+      width: 300px;
+    }
+  }
+  &:hover {
+    border: 2px solid var(--tertiary-color);
+    box-shadow: 0px 0px 5px 2px var(--tertiary-color);
+    .card-tooltip {
+      display: initial;
+    }
   }
 `;

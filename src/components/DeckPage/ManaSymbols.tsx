@@ -46,7 +46,7 @@ export default function ManaSymbols({ manaCostArray }: Props) {
 
   return (
     <>
-      <ManaSymbolsStyle>
+      <ManaSymbolsStyle className='prevent-select'>
         {manaCostArray.map((symbol, index) => {
           const imgSrc = getSymbolImage(symbol);
           return <img key={index} src={imgSrc} alt='mana symbol' />;
@@ -104,7 +104,7 @@ const ManaSymbolsStyle = styled.div`
   justify-content: flex-start;
   gap: 2px;
   img {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
   }
 `;

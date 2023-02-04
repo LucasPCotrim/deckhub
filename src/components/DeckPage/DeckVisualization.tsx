@@ -113,11 +113,13 @@ function getCardTypeGroups(cards: CardType[]) {
 
 const DeckVisualizationStyle = styled.div`
   width: 100%;
-  padding: 20px 50px;
+  padding: 20px 50px 100px 50px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 10px;
   flex-wrap: wrap;
+  margin-right: 120px;
+  margin-left: 80px;
 `;
