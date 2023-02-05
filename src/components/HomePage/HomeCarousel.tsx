@@ -12,7 +12,7 @@ export default function HomeCarousel() {
         <Carousel
           infiniteLoop={true}
           autoPlay={true}
-          interval={4000}
+          interval={3000}
           showArrows={true}
           showThumbs={false}
           showStatus={false}>
