@@ -21,7 +21,7 @@ const CardStyle = styled.div`
   position: relative;
   width: 250px;
   aspect-ratio: 0.71428571428;
-  border-radius: 15px;
+  border-radius: 14px;
   border: 1px solid black;
   cursor: pointer;
   &:hover {
@@ -40,6 +40,6 @@ const ImageWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
+    border-radius: 14px;
   }
 `;
