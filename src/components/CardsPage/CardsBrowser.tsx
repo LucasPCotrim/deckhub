@@ -39,7 +39,7 @@ export default function CardsBrowser() {
 const CardsBrowserStyle = styled.div`
   width: min(1600px, 100%);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;

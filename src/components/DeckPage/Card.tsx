@@ -16,7 +16,7 @@ export default function Card({ card }: Props) {
         <div className='amount'>{`${card.amount}x`}</div>
         <CardInfo color={color}>
           <div className='name'>{`${card.name}`}</div>
-          <ManaSymbols manaCostArray={manaCostArray} />
+          <ManaSymbols manaCostArray={manaCostArray} imgSize={18} />
           <div className='card-tooltip prevent-select'>
             <img src={card.imageUri} alt='' />
           </div>
