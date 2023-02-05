@@ -40,13 +40,14 @@ import GenericManaSymbol_X from '../../assets/SymbolManaGeneric_X.svg';
 
 type Props = {
   manaCostArray: string[];
+  imgSize: number;
 };
-export default function ManaSymbols({ manaCostArray }: Props) {
+export default function ManaSymbols({ manaCostArray, imgSize }: Props) {
   if (!manaCostArray || manaCostArray.length === 0) return <></>;
 
   return (
     <>
-      <ManaSymbolsStyle className='prevent-select'>
+      <ManaSymbolsStyle size={imgSize} className='prevent-select'>
         {manaCostArray.map((symbol, index) => {
           const imgSrc = getSymbolImage(symbol);
           return <img key={index} src={imgSrc} alt='mana symbol' />;
@@ -97,14 +98,17 @@ function getSymbolImage(symbol: string) {
   return uManaSymbol;
 }
 
-const ManaSymbolsStyle = styled.div`
+interface ManaSymbolsStyleProps {
+  size: number;
+}
+const ManaSymbolsStyle = styled.div<ManaSymbolsStyleProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   gap: 2px;
   img {
-    width: 18px;
-    height: 18px;
+    width: ${(p) => `${p.size}px`};
+    height: ${(p) => `${p.size}px`};
   }
 `;

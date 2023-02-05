@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import DecksPage from './pages/DecksPage';
 import DeckPage from './pages/DeckPage';
 import CardsPage from './pages/CardsPage';
+import CardPage from './pages/CardPage';
 import { UserProvider } from './contexts/UserContext';
 
 const queryClient = new QueryClient();
@@ -51,6 +52,14 @@ export default function App() {
                 element={
                   <MainPage>
                     <CardsPage />
+                  </MainPage>
+                }
+              />
+              <Route
+                path='/card/:id'
+                element={
+                  <MainPage>
+                    <CardPage />
                   </MainPage>
                 }
               />
