@@ -6,14 +6,14 @@ export default function CoverImage() {
       <CoverImageStyle className='prevent-select'>
         <div className='top-blur-cover'></div>
         <img
-          src='https://wallpaperaccess.com/full/1671611.jpg'
-          alt='deckspage cover'
+          src='https://wallpaperaccess.com/full/1671590.jpg'
+          alt='cardspage cover'
           draggable='false'
         />
         <div className='bottom-blur-cover'></div>
-        <DecksPageHeader>
-          <h1>Explore new Decks</h1>
-        </DecksPageHeader>
+        <CardsPageHeader>
+          <h1>Search for any Card</h1>
+        </CardsPageHeader>
       </CoverImageStyle>
     </>
   );
@@ -54,7 +54,7 @@ const CoverImageStyle = styled.div`
   }
 `;
 
-const DecksPageHeader = styled.div`
+const CardsPageHeader = styled.div`
   position: absolute;
   top: 0;
   left: 0;
