@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Card from './Card';
 import { CardType } from '../../contexts/DeckContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   title: string;
@@ -17,12 +18,14 @@ export default function CardTypeGroup({ title, cards }: Props) {
   }
   return (
     <>
-      <CardTypeGroupStyle>
+      <CardTypeGroupStyle className='prevent-link-decoration'>
         <GroupTitle>
           <h1>{`${title} (${numberCardsInGroup})`}</h1>
         </GroupTitle>
         {cards.map((card, index) => (
-          <Card key={index} card={card} />
+          <Link key={index} to={`/card/${card.id}`}>
+            <Card key={index} card={card} />
+          </Link>
         ))}
       </CardTypeGroupStyle>
     </>
@@ -39,6 +42,9 @@ const CardTypeGroupStyle = styled.div`
   padding: 4px;
   margin-bottom: 50px;
   margin-right: 20px;
+  a {
+    width: 100%;
+  }
 `;
 
 const GroupTitle = styled.div`
