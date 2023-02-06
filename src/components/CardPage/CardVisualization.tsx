@@ -19,6 +19,7 @@ export default function CardVisualization() {
 
           <div className='card-type'>{cardData.typeLine}</div>
           <div className='card-text'>{cardData.oracleText}</div>
+          <div className='flavor-text'>{cardData.flavorText}</div>
         </CardInformation>
       </CardVisualizationStyle>
     </>
@@ -61,5 +62,11 @@ const CardInformation = styled.div`
   .card-text {
     font-size: 20px;
     line-height: 35px;
+    margin-bottom: 40px;
+  }
+  .flavor-text {
+    font-size: 16px;
+    line-height: 25px;
+    font-style: italic;
   }
 `;

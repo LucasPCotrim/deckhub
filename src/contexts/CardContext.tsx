@@ -11,6 +11,7 @@ export type CardDataType = {
   typeLine: string;
   rarity: string;
   oracleText: string;
+  flavorText: string;
   colors: string;
   colorIdentity: string;
   cmc: number;
@@ -52,6 +53,7 @@ export function CardProvider({ children }: Props) {
     typeLine: '',
     rarity: '',
     oracleText: '',
+    flavorText: '',
     colors: '',
     colorIdentity: '',
     cmc: 0,
