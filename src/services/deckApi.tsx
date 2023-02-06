@@ -1,7 +1,14 @@
 import api from './api';
 
-export async function getDecks(token: string) {
-  return api.get('/decks/', {
+type filterParamsType = {
+  name?: string;
+};
+export async function getDecks(token: string, filterParams?: filterParamsType) {
+  let url = '/decks/';
+  if (filterParams?.name) {
+    url = url.concat(`?name=${filterParams.name}`);
+  }
+  return api.get(url, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

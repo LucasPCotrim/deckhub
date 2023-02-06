@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import DecksBrowser from './DecksBrowser';
+import { DecksProvider } from '../../contexts/DecksContext';
 
 export default function PageContent() {
   return (
     <>
       <PageContentStyle>
-        <SearchBar />
-        <DecksBrowser />
+        <DecksProvider>
+          <SearchBar />
+          <DecksBrowser />
+        </DecksProvider>
       </PageContentStyle>
     </>
   );
