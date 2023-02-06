@@ -5,17 +5,17 @@ import { deckApi } from '../../services/deckApi';
 import useToken from '../../hooks/useToken';
 import LoadingScreen from '../utils/LoadingScreen';
 import { Link } from 'react-router-dom';
+import DecksContext, { DeckDataType } from '../../contexts/DecksContext';
+import { useContext } from 'react';
 
-type deckType = {
-  id: number;
-  name: string;
-  image: string;
-  numVisits: number;
-  format: { id: number; name: string };
-};
 export default function DecksBrowser() {
   const token = useToken();
-  const decksQuery = useQuery('decks-data', () => deckApi.getDecks(token));
+  const { decksData, setDecksData } = useContext(DecksContext);
+  const decksQuery = useQuery('decks-data', () => deckApi.getDecks(token), {
+    onSuccess: (data) => {
+      setDecksData(data.data);
+    },
+  });
 
   if (decksQuery.isLoading) {
     return (
@@ -28,7 +28,7 @@ export default function DecksBrowser() {
   return (
     <>
       <DecksBrowserStyle className='prevent-link-decoration'>
-        {decksQuery?.data?.data.map((deck: deckType, index: number) => (
+        {decksData.map((deck: DeckDataType, index: number) => (
           <Link key={index} to={`/deck/${deck.id}`}>
             <Deck
               image={deck.image}

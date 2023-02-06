@@ -32,8 +32,8 @@ export default function SearchBar() {
   return (
     <>
       <SearchBarStyle>
-        <div className='advanced-search'>Advanced Search</div>
         <form onSubmit={executeSearch}>
+          <div className='advanced-search'>Advanced Search</div>
           <input
             type='text'
             value={inputText}
