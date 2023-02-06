@@ -20,16 +20,9 @@ export default function SearchBar() {
     }
   );
 
-  if (cardsState.isLoading) {
-    return (
-      <>
-        <LoadingScreen message={'Loading...'} />
-      </>
-    );
-  }
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
+    cardsState.mutate(inputText);
   };
   const executeSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
