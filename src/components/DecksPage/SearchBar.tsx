@@ -5,6 +5,7 @@ import useToken from '../../hooks/useToken';
 import DecksContext from '../../contexts/DecksContext';
 import { useMutation } from 'react-query';
 import { deckApi } from '../../services/deckApi';
+import { Link } from 'react-router-dom';
 
 export default function SearchBar() {
   const [inputText, setInputText] = useState('');
@@ -31,7 +32,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <SearchBarStyle>
+      <SearchBarStyle className='prevent-link-decoration'>
         <form onSubmit={executeSearch}>
           <div className='advanced-search'>Advanced Search</div>
           <input
@@ -44,33 +45,40 @@ export default function SearchBar() {
             <MdSearch className='icon' />
           </button>
         </form>
+        <Link to={'/'}>
+          <CreateNewDeckButton>Create Deck</CreateNewDeckButton>
+        </Link>
       </SearchBarStyle>
     </>
   );
 }
 
 const SearchBarStyle = styled.div`
-  position: relative;
   height: 48px;
   width: min(600px, 100%);
-  background-color: var(--quaternary-color);
-  border-radius: 12px;
-  padding-left: 6px;
-  padding-right: 4px;
   margin-bottom: 80px;
-  border: 1px solid var(--tertiary-color);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
   form {
-    width: 100%;
+    position: relative;
+    background-color: var(--quaternary-color);
+    border-radius: 12px;
+    padding-left: 6px;
+    padding-right: 4px;
+    border: 1px solid var(--tertiary-color);
+    width: calc(100% - 100px);
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-  }
-  &:focus-within {
-    -webkit-box-shadow: 0px 0px 10px 1px var(--tertiary-color);
-    box-shadow: 0px 0px 10px 1px var(--tertiary-color);
-    border: 1px solid cyan;
+    &:focus-within {
+      -webkit-box-shadow: 0px 0px 10px 1px var(--tertiary-color);
+      box-shadow: 0px 0px 10px 1px var(--tertiary-color);
+      border: 1px solid cyan;
+    }
   }
 
   .advanced-search {
@@ -109,5 +117,20 @@ const SearchBarStyle = styled.div`
       color: black;
       font-size: 30px;
     }
+  }
+`;
+
+const CreateNewDeckButton = styled.div`
+  width: 150px;
+  height: 50px;
+  background-color: var(--tertiary-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--secundary-color);
   }
 `;
