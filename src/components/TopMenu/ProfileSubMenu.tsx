@@ -13,7 +13,7 @@ type Props = {
 
 export default function ProfileSubMenu({ handleToggleProfileSubMenu }: Props) {
   const navigate = useNavigate();
-  const { setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
   const token = useToken();
 
   const logoutState = useMutation(
@@ -31,6 +31,10 @@ export default function ProfileSubMenu({ handleToggleProfileSubMenu }: Props) {
     handleToggleProfileSubMenu(event);
     navigate('/create-deck');
   };
+  const navigateToUserPage = (event: React.MouseEvent<HTMLDivElement>) => {
+    handleToggleProfileSubMenu(event);
+    navigate(`/user/${userData.id}`);
+  };
 
   const handleLogout = (event: React.MouseEvent<HTMLDivElement>) => {
     logoutState.mutate(token);
@@ -46,7 +50,9 @@ export default function ProfileSubMenu({ handleToggleProfileSubMenu }: Props) {
           <IoMdClose className='icon' />
         </div>
         <div className='options-container'>
-          <div className='option'>Profile</div>
+          <div className='option' onClick={navigateToUserPage}>
+            Profile
+          </div>
           <div className='option' onClick={navigateToCreateDeck}>
             Create new Deck
           </div>

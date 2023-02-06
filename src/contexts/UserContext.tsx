@@ -3,10 +3,12 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 type userContextValue = {
   userData: {
+    id: number;
     token: string;
     name: string;
     email: string;
     profilePic: string;
+    createdAt: Date;
   };
   setUserData: (value: any) => void;
 };

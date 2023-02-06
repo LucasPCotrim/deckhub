@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FaComments, FaHeart, FaEye } from 'react-icons/fa';
 import { RiArrowGoBackLine } from 'react-icons/ri';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 type Props = {
   author: {
@@ -29,10 +29,14 @@ export default function DeckInfo({ author, deckName, format, stats }: Props) {
           </div>
         </SideButtons>
 
-        <HeaderInfo>
+        <HeaderInfo className='prevent-link-decoration'>
           <AuthorInfo>
-            <img src={author.profilePic} alt='author profile pic' />
-            <div className='author-name'>{author.name}</div>
+            <Link to={`/user/${author.id}`}>
+              <img src={author.profilePic} alt='author profile pic' />
+            </Link>
+            <Link to={`/user/${author.id}`}>
+              <div className='author-name'>{author.name}</div>
+            </Link>
           </AuthorInfo>
           <DeckName>
             <div className='name'>{deckName}</div>

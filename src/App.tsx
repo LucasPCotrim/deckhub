@@ -10,6 +10,7 @@ import DecksPage from './pages/DecksPage';
 import DeckPage from './pages/DeckPage';
 import CardsPage from './pages/CardsPage';
 import CardPage from './pages/CardPage';
+import ProfilePage from './pages/ProfilePage';
 import { UserProvider } from './contexts/UserContext';
 import CreateDeckPage from './pages/CreateDeckPage';
 
@@ -70,6 +71,14 @@ export default function App() {
                 element={
                   <MainPage>
                     <CreateDeckPage />
+                  </MainPage>
+                }
+              />
+              <Route
+                path='/user/:id'
+                element={
+                  <MainPage>
+                    <ProfilePage />
                   </MainPage>
                 }
               />
