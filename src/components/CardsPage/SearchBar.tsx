@@ -5,7 +5,6 @@ import CardsContext from '../../contexts/CardsContext';
 import { useMutation } from 'react-query';
 import { cardApi } from '../../services/cardApi';
 import useToken from '../../hooks/useToken';
-import LoadingScreen from '../utils/LoadingScreen';
 
 export default function SearchBar() {
   const [inputText, setInputText] = useState('');
