@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import coverImage from '../../assets/nicol-bolas.jpg';
+import coverImage from '../../assets/imgs/nicol-bolas.jpg';
 
 export default function CoverImage() {
   return (

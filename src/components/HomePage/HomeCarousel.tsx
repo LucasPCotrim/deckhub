@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Img1 from '../../assets/SetPhyrexiaAllWillBeOne.png';
-import Img2 from '../../assets/MagicLogo.jpg';
-import Img3 from '../../assets/MtgColors.jpg';
+import Img1 from '../../assets/imgs/SetPhyrexiaAllWillBeOne.png';
+import Img2 from '../../assets/imgs/MagicLogo.jpg';
+import Img3 from '../../assets/imgs/MtgColors.jpg';
 
 export default function HomeCarousel() {
   return (
