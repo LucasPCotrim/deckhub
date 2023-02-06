@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 import { useContext } from 'react';
-import UserContext from '../../contexts/UserContext';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
+import ProfileContext from '../../contexts/ProfileContext';
 
 export default function CoverImage() {
+  const { profileData } = useContext(ProfileContext);
   const navigate = useNavigate();
-  const { userData } = useContext(UserContext);
 
   return (
     <>
       <CoverImageStyle className='prevent-select'>
         <div className='top-blur-cover'></div>
         <img
-          src={userData.profilePic}
+          src={profileData.profilePic}
           alt='deckspage cover'
           draggable='false'
         />
