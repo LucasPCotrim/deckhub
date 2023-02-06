@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ProfilePic from './ProfilePic';
 import useLoggedIn from '../../hooks/useLoggedIn';
+import { BiBell, BiMessageRounded } from 'react-icons/bi';
+import { BsPeople } from 'react-icons/bs';
 
 function AuthenticationButtons() {
   return (
@@ -34,7 +36,18 @@ export default function MenuButtons() {
             <Link to='/cards'>Cards</Link>
           </MenuButton>
         </div>
-        {loggedIn ? <ProfilePic /> : <AuthenticationButtons />}
+        <div className='options-group prevent-select'>
+          <MenuButton>
+            <BiBell className='icon' />
+          </MenuButton>
+          <MenuButton>
+            <BiMessageRounded className='icon' />
+          </MenuButton>
+          <MenuButton>
+            <BsPeople className='icon' />
+          </MenuButton>
+          {loggedIn ? <ProfilePic /> : <AuthenticationButtons />}
+        </div>
       </MenuButtonsStyle>
     </>
   );
@@ -48,6 +61,7 @@ const MenuButtonsStyle = styled.div`
   align-items: center;
   justify-content: space-between;
   .options-group {
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -58,4 +72,7 @@ const MenuButtonsStyle = styled.div`
 const MenuButton = styled.div`
   font-size: 16px;
   cursor: pointer;
+  .icon {
+    font-size: 22px;
+  }
 `;
