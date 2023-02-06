@@ -1,7 +1,14 @@
 import api from './api';
 
-export async function getCards(token: string) {
-  return api.get('/cards/', {
+type filterParamsType = {
+  name?: string;
+};
+export async function getCards(token: string, filterParams?: filterParamsType) {
+  let url = '/cards/';
+  if (filterParams?.name) {
+    url = url.concat(`?name=${filterParams.name}`);
+  }
+  return api.get(url, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
