@@ -36,18 +36,22 @@ export default function MenuButtons() {
             <Link to='/cards'>Cards</Link>
           </MenuButton>
         </div>
-        <div className='options-group prevent-select'>
-          <MenuButton>
-            <BiBell className='icon' />
-          </MenuButton>
-          <MenuButton>
-            <BiMessageRounded className='icon' />
-          </MenuButton>
-          <MenuButton>
-            <BsPeople className='icon' />
-          </MenuButton>
-          {loggedIn ? <ProfilePic /> : <AuthenticationButtons />}
-        </div>
+        {loggedIn ? (
+          <div className='options-group prevent-select'>
+            <MenuButton>
+              <BiBell className='icon' />
+            </MenuButton>
+            <MenuButton>
+              <BiMessageRounded className='icon' />
+            </MenuButton>
+            <MenuButton>
+              <BsPeople className='icon' />
+            </MenuButton>
+            <ProfilePic />
+          </div>
+        ) : (
+          <AuthenticationButtons />
+        )}
       </MenuButtonsStyle>
     </>
   );
