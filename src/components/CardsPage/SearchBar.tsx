@@ -1,15 +1,57 @@
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
+import { useContext, useState } from 'react';
+import CardsContext from '../../contexts/CardsContext';
+import { useMutation } from 'react-query';
+import { cardApi } from '../../services/cardApi';
+import useToken from '../../hooks/useToken';
+import LoadingScreen from '../utils/LoadingScreen';
 
 export default function SearchBar() {
+  const [inputText, setInputText] = useState('');
+  const { setCardsData } = useContext(CardsContext);
+  const token = useToken();
+  const cardsState = useMutation(
+    (name: string) => cardApi.getCards(token, { name: inputText }),
+    {
+      onSuccess: (data) => {
+        setCardsData(data.data);
+      },
+    }
+  );
+
+  if (cardsState.isLoading) {
+    return (
+      <>
+        <LoadingScreen message={'Loading...'} />
+      </>
+    );
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputText(event.target.value);
+  };
+  const executeSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    cardsState.mutate(inputText);
+    setInputText('');
+  };
+
   return (
     <>
       <SearchBarStyle>
         <div className='advanced-search'>Advanced Search</div>
-        <input type='text' />
-        <button>
-          <MdSearch className='icon' />
-        </button>
+        <form onSubmit={executeSearch}>
+          <input
+            type='text'
+            value={inputText}
+            placeholder={'Enter Card name'}
+            onChange={handleChange}
+          />
+          <button>
+            <MdSearch className='icon' />
+          </button>
+        </form>
       </SearchBarStyle>
     </>
   );
@@ -19,10 +61,6 @@ const SearchBarStyle = styled.div`
   position: relative;
   height: 48px;
   width: min(600px, 100%);
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   background-color: var(--quaternary-color);
   border-radius: 12px;
   padding-left: 6px;
@@ -33,6 +71,14 @@ const SearchBarStyle = styled.div`
     -webkit-box-shadow: 0px 0px 10px 1px var(--tertiary-color);
     box-shadow: 0px 0px 10px 1px var(--tertiary-color);
     border: 1px solid cyan;
+  }
+  form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .advanced-search {

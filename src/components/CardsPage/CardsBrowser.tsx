@@ -5,15 +5,18 @@ import useToken from '../../hooks/useToken';
 import LoadingScreen from '../utils/LoadingScreen';
 import { Link } from 'react-router-dom';
 import Card from './Card';
+import { CardDataType } from '../../contexts/CardsContext';
+import { useContext } from 'react';
+import CardsContext from '../../contexts/CardsContext';
 
-type cardType = {
-  id: number;
-  name: string;
-  imageUri: string;
-};
 export default function CardsBrowser() {
+  const { cardsData, setCardsData } = useContext(CardsContext);
   const token = useToken();
-  const cardsQuery = useQuery('cards-data', () => cardApi.getCards(token));
+  const cardsQuery = useQuery('cards-data', () => cardApi.getCards(token), {
+    onSuccess: (data) => {
+      setCardsData(data.data);
+    },
+  });
 
   if (cardsQuery.isLoading) {
     return (
@@ -26,7 +29,7 @@ export default function CardsBrowser() {
   return (
     <>
       <CardsBrowserStyle className='prevent-link-decoration'>
-        {cardsQuery?.data?.data.map((card: cardType, index: number) => (
+        {cardsData.map((card: CardDataType, index: number) => (
           <Link key={index} to={`/card/${card.id}`}>
             <Card id={card.id} name={card.name} image={card.imageUri} />
           </Link>
