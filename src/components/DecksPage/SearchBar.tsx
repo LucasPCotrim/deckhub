@@ -45,7 +45,7 @@ export default function SearchBar() {
             <MdSearch className='icon' />
           </button>
         </form>
-        <Link to={'/'}>
+        <Link to={'/create-deck'}>
           <CreateNewDeckButton>Create Deck</CreateNewDeckButton>
         </Link>
       </SearchBarStyle>
@@ -129,6 +129,7 @@ const CreateNewDeckButton = styled.div`
   align-items: center;
   justify-content: center;
   padding: 8px;
+  font-size: 18px;
   cursor: pointer;
   &:hover {
     background-color: var(--secundary-color);

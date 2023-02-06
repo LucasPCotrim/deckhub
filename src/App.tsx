@@ -10,6 +10,7 @@ import DeckPage from './pages/DeckPage';
 import CardsPage from './pages/CardsPage';
 import CardPage from './pages/CardPage';
 import { UserProvider } from './contexts/UserContext';
+import CreateDeckPage from './pages/CreateDeckPage';
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,14 @@ export default function App() {
                 element={
                   <MainPage>
                     <CardPage />
+                  </MainPage>
+                }
+              />
+              <Route
+                path='/create-deck'
+                element={
+                  <MainPage>
+                    <CreateDeckPage />
                   </MainPage>
                 }
               />
