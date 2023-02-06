@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { useContext, useState } from 'react';
-import CardsContext from '../../contexts/CardsContext';
+import CreateDeckContext from '../../contexts/CreateDeckContext';
 import { useMutation } from 'react-query';
 import { cardApi } from '../../services/cardApi';
 import useToken from '../../hooks/useToken';
 
 export default function SearchBar() {
   const [inputText, setInputText] = useState('');
-  const { setCardsData } = useContext(CardsContext);
+  const { deckData, setDeckData } = useContext(CreateDeckContext);
   const token = useToken();
   const cardsState = useMutation(
-    (name: string) => cardApi.getCardCovers(token, { name: inputText }),
+    (name: string) => cardApi.getCards(token, { name: inputText }),
     {
       onSuccess: (data) => {
-        setCardsData(data.data);
+        setDeckData({ ...deckData, cardsSearched: data.data });
       },
     }
   );

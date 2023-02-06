@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import coverImage from '../../assets/hydra.jpg';
+import coverImage from '../../assets/imgs/hydra.jpg';
 
 export default function CoverImage() {
   return (

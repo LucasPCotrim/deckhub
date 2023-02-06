@@ -1,23 +1,28 @@
 import styled from 'styled-components';
-import CardTypeGroup from './CardTypeGroup';
+import CardTypeGroup from '../DeckPage/CardTypeGroup';
 import { useContext } from 'react';
-import DeckContext, { CardType } from '../../contexts/DeckContext';
+import CreateDeckContext, { CardType } from '../../contexts/CreateDeckContext';
+import DeckCover from './DeckCover';
 
 export default function DeckVisualization() {
-  const { deckData } = useContext(DeckContext);
+  const { deckData } = useContext(CreateDeckContext);
   const cards = deckData.cards;
   const cardTypeGroups = getCardTypeGroups(cards);
 
   return (
     <>
       <DeckVisualizationStyle>
-        {cardTypeGroups.map((cardTypeGroup, index) => (
-          <CardTypeGroup
-            key={index}
-            title={cardTypeGroup.title}
-            cards={cardTypeGroup.cards}
-          />
-        ))}
+        <DeckCover />
+
+        <div className='cardTypes'>
+          {cardTypeGroups.map((cardTypeGroup, index) => (
+            <CardTypeGroup
+              key={index}
+              title={cardTypeGroup.title}
+              cards={cardTypeGroup.cards}
+            />
+          ))}
+        </div>
       </DeckVisualizationStyle>
     </>
   );
@@ -113,14 +118,20 @@ function getCardTypeGroups(cards: CardType[]) {
 
 const DeckVisualizationStyle = styled.div`
   width: 100%;
-  padding: 20px 50px 100px 50px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-right: 120px;
-  margin-left: 80px;
-  margin-bottom: 50px;
+  .cardTypes {
+    width: 100%;
+    padding: 20px 50px 100px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-right: 120px;
+    margin-left: 80px;
+    margin-bottom: 50px;
+  }
 `;

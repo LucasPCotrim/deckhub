@@ -3,6 +3,21 @@ import api from './api';
 type filterParamsType = {
   name?: string;
 };
+export async function getCardCovers(
+  token: string,
+  filterParams?: filterParamsType
+) {
+  let url = '/cards/covers';
+  if (filterParams?.name) {
+    url = url.concat(`?name=${filterParams.name}`);
+  }
+  return api.get(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
 export async function getCards(token: string, filterParams?: filterParamsType) {
   let url = '/cards/';
   if (filterParams?.name) {
@@ -23,6 +38,6 @@ export async function getCardInfo(token: string, cardId: number) {
   });
 }
 
-const cardApi = { getCards, getCardInfo };
+const cardApi = { getCardCovers, getCards, getCardInfo };
 
 export { cardApi };

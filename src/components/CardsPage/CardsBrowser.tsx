@@ -12,11 +12,15 @@ import CardsContext from '../../contexts/CardsContext';
 export default function CardsBrowser() {
   const { cardsData, setCardsData } = useContext(CardsContext);
   const token = useToken();
-  const cardsQuery = useQuery('cards-data', () => cardApi.getCards(token), {
-    onSuccess: (data) => {
-      setCardsData(data.data);
-    },
-  });
+  const cardsQuery = useQuery(
+    'cards-data',
+    () => cardApi.getCardCovers(token),
+    {
+      onSuccess: (data) => {
+        setCardsData(data.data);
+      },
+    }
+  );
 
   if (cardsQuery.isLoading) {
     return (
