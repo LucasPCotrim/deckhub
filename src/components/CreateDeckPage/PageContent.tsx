@@ -1,9 +1,16 @@
 import styled from 'styled-components';
+import DeckInfoForm from './DeckInfoForm';
+import AddCardsSection from './AddCardsSection';
+import DeckVisualization from './DeckVisualization';
 
 export default function PageContent() {
   return (
     <>
-      <PageContentStyle></PageContentStyle>
+      <PageContentStyle>
+        <DeckInfoForm />
+        <AddCardsSection />
+        <DeckVisualization />
+      </PageContentStyle>
     </>
   );
 }

@@ -6,8 +6,10 @@ import DecksContext from '../../contexts/DecksContext';
 import { useMutation } from 'react-query';
 import { deckApi } from '../../services/deckApi';
 import { Link } from 'react-router-dom';
+import useLoggedIn from '../../hooks/useLoggedIn';
 
 export default function SearchBar() {
+  const loggedIn = useLoggedIn();
   const [inputText, setInputText] = useState('');
   const { setDecksData } = useContext(DecksContext);
   const token = useToken();
@@ -45,9 +47,13 @@ export default function SearchBar() {
             <MdSearch className='icon' />
           </button>
         </form>
-        <Link to={'/create-deck'}>
-          <CreateNewDeckButton>Create Deck</CreateNewDeckButton>
-        </Link>
+        {loggedIn ? (
+          <Link to={'/create-deck'}>
+            <CreateNewDeckButton>Create Deck</CreateNewDeckButton>
+          </Link>
+        ) : (
+          <></>
+        )}
       </SearchBarStyle>
     </>
   );
@@ -68,7 +74,7 @@ const SearchBarStyle = styled.div`
     padding-left: 6px;
     padding-right: 4px;
     border: 1px solid var(--tertiary-color);
-    width: calc(100% - 100px);
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;

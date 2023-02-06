@@ -1,3 +1,4 @@
+import 'react-tooltip/dist/react-tooltip.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import GlobalStyle from './assets/Globalstyle';
