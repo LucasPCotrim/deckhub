@@ -42,7 +42,6 @@ export default function HomeCarousel() {
 
 const HomeCarouselStyle = styled.div`
   margin-top: 100px;
-  margin-bottom: 100px;
   width: min(80%, 1000px);
   height: 300px;
 `;

@@ -4,7 +4,7 @@ import Logo from '../components/TopMenu/Logo';
 import { Link } from 'react-router-dom';
 import LoginForm from '../components/LoginPage/LoginForm';
 
-export default function SignupPage() {
+export default function LoginPage() {
   return (
     <>
       <LoginPageStyle>
